@@ -207,7 +207,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.54251456, y: 0.039611198, z: 0.03961119, w: 0.83817655}
-  m_LocalPosition: {x: 92.577896, y: 26.32, z: 8.629064}
+  m_LocalPosition: {x: 91.0477, y: 25.96, z: 12.34258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -480,7 +480,7 @@ Transform:
   m_GameObject: {fileID: 543572069}
   serializedVersion: 2
   m_LocalRotation: {x: 0.54251456, y: 0.039611198, z: 0.03961119, w: 0.83817655}
-  m_LocalPosition: {x: 92.577896, y: 26.32, z: 8.629064}
+  m_LocalPosition: {x: 91.0477, y: 25.96, z: 12.34258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -667,17 +667,17 @@ MonoBehaviour:
   terrainMaterial: {fileID: -876546973899608171, guid: f1405ecd3e846a245adac465a26cd66f, type: 3}
   gradient:
     serializedVersion: 2
-    key0: {r: 0.6415094, g: 0.5407812, b: 0.28141683, a: 1}
-    key1: {r: 1, g: 0.8253692, b: 0.3820755, a: 1}
-    key2: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 0}
+    key0: {r: 0.27078068, g: 0.4433962, b: 0.17359379, a: 1}
+    key1: {r: 0.5328973, g: 1, b: 0.2688679, a: 1}
+    key2: {r: 1, g: 0.9964669, b: 0.011764705, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
     key5: {r: 0, g: 0, b: 0, a: 0}
     key6: {r: 0, g: 0, b: 0, a: 0}
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
-    ctime1: 45296
-    ctime2: 65535
+    ctime1: 35273
+    ctime2: 64379
     ctime3: 0
     ctime4: 0
     ctime5: 0
@@ -703,6 +703,8 @@ MonoBehaviour:
   persistenceMax: 0.8
   lacunarityMin: 1
   lacunarityMax: 1.5
+  chestPrefab: {fileID: 4114531270616507957, guid: 321bbd659d70a9840acf3f1dd3fd5401, type: 3}
+  numberOfChests: 100
 --- !u!114 &1682866239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,15 +747,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6334926873456821174, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 93.8902
+      value: 92.36
       objectReference: {fileID: 0}
     - target: {fileID: 6334926873456821174, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.32
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 6334926873456821174, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.276484
+      value: 20.99
       objectReference: {fileID: 0}
     - target: {fileID: 6334926873456821174, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -789,6 +791,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8645236116718921481, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645236116718921481, guid: cb7a22a0934ba77469834f3847ced0a3, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
