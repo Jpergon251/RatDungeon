@@ -1,10 +1,13 @@
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class ChestBehavior : MonoBehaviour
 {
     public GameObject cheesePrefab; // Prefab del queso
     public float launchForce = 5f; // Fuerza con la que se lanza el queso
-
+    private Vector3 cheeseSpawnLocation;
     private void OnTriggerEnter(Collider other)
     {
         // Verificar si el jugador (rata) colisiona con el cofre
@@ -23,7 +26,7 @@ public class ChestBehavior : MonoBehaviour
         if (cheesePrefab != null)
         {
             // Instanciar el queso en la posición del cofre
-            GameObject cheese = Instantiate(cheesePrefab, transform.position, Quaternion.identity);
+            GameObject cheese = Instantiate(cheesePrefab, transform.position , Quaternion.identity);
 
             // Aplicar una fuerza al queso para lanzarlo
             Rigidbody cheeseRigidbody = cheese.GetComponent<Rigidbody>();
