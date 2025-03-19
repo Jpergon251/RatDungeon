@@ -6,12 +6,26 @@ public class CheeseBehavior : MonoBehaviour
     public enum Rarity { Common, Rare, Epic, Legendary } // Rarezas de los quesos
     public Rarity rarity; // Rareza de este queso
 
-    public Material cheeseMaterial; // Material del queso
+    public Material outlineShader; // Material del queso
+
+    private float lifetime = 5f; // Tiempo de vida del queso en segundos
 
     private void Start()
     {
+        // Asignar una rareza aleatoria al queso
+        AssignRandomRarity();
+
         // Configurar el color del contorno según la rareza
         SetOutlineColor();
+
+        // Destruir el queso después de 5 segundos si no es recolectado
+        Destroy(gameObject, lifetime);
+    }
+
+    void AssignRandomRarity()
+    {
+        // Asignar una rareza aleatoria
+        rarity = (Rarity)Random.Range(0, System.Enum.GetValues(typeof(Rarity)).Length);
     }
 
     void SetOutlineColor()
@@ -35,19 +49,19 @@ public class CheeseBehavior : MonoBehaviour
         }
 
         // Aplicar el color al material
-        cheeseMaterial.SetColor("_OutlineColor", outlineColor);
+        outlineShader.SetColor("_OutlineColor", outlineColor);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         // Verificar si el jugador colisiona con el queso
-        if (other.CompareTag("Player"))
+        if (other.body.CompareTag("Player"))
         {
             // Obtener el componente PlayerController del jugador
-            PlayerController player = other.GetComponent<PlayerController>();
+            PlayerController player = other.body.GetComponent<PlayerController>();
             if (player != null)
             {
-                // Otorgar XP al jugador
+                // Otorgar XP al jugador según la rareza
                 player.AddXP(GetXPAmount());
 
                 // Destruir el queso
