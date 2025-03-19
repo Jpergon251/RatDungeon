@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheesePrefab: {fileID: 8498984102361786288, guid: 47cc21a4b558ea94e875378781e80fd7, type: 3}
-  launchForce: 5
+  launchForce: 10
 --- !u!65 &6829939213133185561
 BoxCollider:
   m_ObjectHideFlags: 0

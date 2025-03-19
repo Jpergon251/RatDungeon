@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rarity: 0
-  outlineShader: {fileID: -876546973899608171, guid: 1d6b7103c7fe2dc4ea59914264d9131e, type: 3}
 --- !u!65 &8363232016390096226
 BoxCollider:
   m_ObjectHideFlags: 0

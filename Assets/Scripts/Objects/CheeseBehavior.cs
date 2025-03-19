@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
@@ -6,10 +7,17 @@ public class CheeseBehavior : MonoBehaviour
     public enum Rarity { Common, Rare, Epic, Legendary } // Rarezas de los quesos
     public Rarity rarity; // Rareza de este queso
 
-    public Material outlineShader; // Material del queso
-
     private float lifetime = 5f; // Tiempo de vida del queso en segundos
 
+    
+    // Lista de probabilidades para cada rareza
+    private List<(Rarity rarity, int weight)> rarityProbabilities = new List<(Rarity, int)>
+    {
+        (Rarity.Common, 50),    // 50% de probabilidad
+        (Rarity.Rare, 30),      // 30% de probabilidad
+        (Rarity.Epic, 15),      // 15% de probabilidad
+        (Rarity.Legendary, 5)   // 5% de probabilidad
+    };
     private void Start()
     {
         // Asignar una rareza aleatoria al queso
@@ -24,8 +32,27 @@ public class CheeseBehavior : MonoBehaviour
 
     void AssignRandomRarity()
     {
-        // Asignar una rareza aleatoria
-        rarity = (Rarity)Random.Range(0, System.Enum.GetValues(typeof(Rarity)).Length);
+        // Calcular el total de pesos
+        int totalWeight = 0;
+        foreach (var prob in rarityProbabilities)
+        {
+            totalWeight += prob.weight;
+        }
+
+        // Generar un número aleatorio dentro del rango de pesos
+        int randomValue = Random.Range(0, totalWeight);
+
+        // Seleccionar la rareza basada en el valor aleatorio
+        int cumulativeWeight = 0;
+        foreach (var prob in rarityProbabilities)
+        {
+            cumulativeWeight += prob.weight;
+            if (randomValue < cumulativeWeight)
+            {
+                rarity = prob.rarity;
+                break;
+            }
+        }
     }
 
     void SetOutlineColor()
@@ -48,8 +75,19 @@ public class CheeseBehavior : MonoBehaviour
                 break;
         }
 
-        // Aplicar el color al material
-        outlineShader.SetColor("_OutlineColor", outlineColor);
+        // Obtener el MeshRenderer
+        MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
+
+        // Buscar el material llamado "OutlineShader"
+        foreach (Material material in meshRenderer.materials)
+        {
+            if (material.name == "OutlineShader" || material.name.StartsWith("OutlineShader"))
+            {
+                // Cambiar el color del contorno
+                material.SetColor("_OutlineColor", outlineColor);
+                break; // Salir del bucle una vez encontrado
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision other)
